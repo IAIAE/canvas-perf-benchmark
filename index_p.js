@@ -7,18 +7,17 @@
 function Circle(r, pen) {
     this.r = r;
     this.pen = pen;
+    var grd = pen.createLinearGradient(0, 0, 400, 400);
+    grd.addColorStop(0, 'red');
+    grd.addColorStop(1, 'blue');
+    this.pen.fillStyle = grd;
     this.twopi = 2 * Math.PI;
     this.draw = function (x, y) {
         var pen = this.pen;
-        pen.save();
-        var grd = pen.createLinearGradient(0, 0, 2 * x, 2 * y);
-        grd.addColorStop(0, 'red');
-        grd.addColorStop(1, 'blue');
-        pen.fillStyle = grd;
+        pen.beginPath();
         pen.arc(x, y, this.r, 0, this.twopi);
-        pen.clip();
-        pen.fillRect(0, 0, 400, 400);
-        pen.restore();
+        pen.closePath();
+        pen.fill();
     };
 }
 var _math = Math;
@@ -37,32 +36,22 @@ function test() {
         }
         return new Date() - start;
     };
-    var base = 100;
-    var lastCost = 0;
-    var sixTime = [];
+    var base = 300;
     var tryTimes = 0;
+    var tryArr = [];
     return new Promise(function (done, notDone) {
         function loop() {
             tryTimes++;
+            tryArr.push(base);
+            if (tryTimes > 9) {
+                return done(tryArr);
+            }
             var time = task(base);
+            time = time || 1;
             if (time != 6) {
                 base = base * 6 / time >>> 0;
-                if (tryTimes > 9) {
-                    return done(base);
-                }
-                lastCost = time;
-                setTimeout(loop, 10);
-            } else {
-                if (lastCost == time) {
-                    done(base);
-                } else if (sixTime.length > 1) {
-                    done((sixTime[0] + sixTime[1] + base) / 3 >>> 0);
-                } else {
-                    sixTime.push(base);
-                    lastCost = base;
-                    setTimeout(loop, 10);
-                }
             }
+            setTimeout(loop, 10);
         }
         loop();
     });
