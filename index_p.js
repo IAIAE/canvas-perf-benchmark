@@ -26,7 +26,6 @@ function test() {
     canvas.width = 400;
     canvas.height = 400;
     var pen = canvas.getContext('2d');
-    var grd = pen.createLinearGradient();
     var shareCircle = new Circle(10, pen);
     var task = function task(num) {
         var start = +new Date();

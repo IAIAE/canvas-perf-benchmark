@@ -1,6 +1,6 @@
 {
   "name": "canvas-perf-benchmark",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a tool for test device performance on canvas2d(not webgl) on production environment.",
   "main": "index_p.js",
   "scripts": {
