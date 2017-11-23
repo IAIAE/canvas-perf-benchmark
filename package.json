@@ -1,0 +1,35 @@
+{
+  "name": "canvas-perf-benchmark",
+  "version": "1.0.1",
+  "description": "This is a tool for test device performance on canvas2d(not webgl) on production environment.",
+  "main": "index_p.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IAIAE/canvas-perf-benchmark.git"
+  },
+  "keywords": [
+    "canvas",
+    "test",
+    "performance",
+    "benchmark"
+  ],
+  "devDependencies": {
+    "babelrc-rollup": "^3.0.0",
+    "babel-cli": "^6.22.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rollup": "^0.41.1",
+    "rollup-plugin-babel": "^3.0.1"
+  },
+  "author": "IAIAE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IAIAE/canvas-perf-benchmark/issues"
+  },
+  "homepage": "https://github.com/IAIAE/canvas-perf-benchmark#readme"
+}
